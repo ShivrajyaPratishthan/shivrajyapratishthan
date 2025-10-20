@@ -1,14 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>शिवराज्य प्रतिष्ठान - Gallery</title>
+  <link rel="stylesheet" href="Stylesheet{Gallery}.css">
 </head>
 <body>
-    <center><h1>शिवराज्य प्रतिष्ठान</h1></center>
-    <hr>
-    <center><h1>⚠️The page is under construction⚠️</h1></center>
-    <center><button><a href="index.html">Go Back Home</a></button></center>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="logo.png" alt="Killa Logo">
+      <h1>शिवराज्य प्रतिष्ठान - Gallery</h1>
+    </div>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="gallery.html" class="active">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+   <!-- photo Section -->
+<section class="photo-section">
+   <h2>Explore the memorable moments from the creation process and the stunning final Killa.</h2>
+   <br>
+   <hr>
+   <br>
+  <h2>Our Killa Photos</h2>
+  <div class="photo-grid">
+    <img src="img1.jpg" onclick="openImage(this)">
+    <img src="img2.jpg" onclick="openImage(this)">
+    <img src="img3.jpg" onclick="openImage(this)">
+    <img src="img4.jpg" onclick="openImage(this)">
+  </div>
+</section>
+
+
+  <!-- Fullscreen Image Viewer -->
+  <div id="fullscreen-view" class="fullscreen-view" onclick="closeImage()">
+    <img id="full-img" src="" alt="Zoomed Image">
+  </div>
+
+  <script>
+    function openImage(img) {
+      document.getElementById("full-img").src = img.src;
+      document.getElementById("fullscreen-view").style.display = "flex";
+    }
+
+    function closeImage() {
+      document.getElementById("fullscreen-view").style.display = "none";
+    }
+  </script>
+
+
+  <!-- Video Section -->
+  <section class="gallery-section">
+    <h2>Our Killa Videos</h2>
+    <div class="gallery-grid">
+      <video src="vid1.mp4" onclick="openVideo(this)" muted></video>
+      <video src="vid2.mp4" onclick="openVideo(this)" muted></video>
+      <video src="vid3.mp4" onclick="openVideo(this)" muted></video>
+      <video src="vid4.mp4" onclick="openVideo(this)" muted></video>
+      <video src="vid5.mp4" onclick="openVideo(this)" muted></video>
+      <video src="vid6.mp4" onclick="openVideo(this)" muted></video>
+      <video src="vid7.mp4" onclick="openVideo(this)" muted></video>
+      <video src="vid8.mp4" onclick="openVideo(this)" muted></video>
+      <video src="vid9.mp4" onclick="openVideo(this)" muted></video>
+    </div>
+  </section>
+
+  <!-- Fullscreen Video Viewer -->
+  <div id="fullscreen-video" class="fullscreen-view" onclick="closeVideo()">
+    <video id="full-video" controls autoplay></video>
+  </div>
+
+  <hr>
+    <br>
+    <center><h3>More Photos and Videos Coming Soon!!!</h3></center>
+    <br><br>
+  <script>
+    function openVideo(video) {
+      const fullVideo = document.getElementById("full-video");
+      fullVideo.src = video.src;
+      document.getElementById("fullscreen-video").style.display = "flex";
+      fullVideo.muted = false; // play with sound
+      fullVideo.play();
+    }
+
+    function closeVideo() {
+      const fullVideo = document.getElementById("full-video");
+      document.getElementById("fullscreen-video").style.display = "none";
+      fullVideo.pause();
+      fullVideo.src = "";
+    }
+
+    // Close on ESC key
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape") closeVideo();
+    });
+  </script>
+
 </body>
 </html>
